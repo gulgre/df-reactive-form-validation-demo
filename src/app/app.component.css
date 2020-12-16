@@ -1,0 +1,33 @@
+html, body, form {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+div.description {
+  font-size:x-small
+}
+div {
+  margin-top: 0.1rem;
+  margin-bottom: 0.6rem;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+span.validation-error {
+  color: red;
+}
+
+div.validation-error {
+  border: red solid 1px;
+}
+input.validation-error {
+  color: red;
+  border: red solid 2px;
+  border-radius: 3px;
+}
+input.validation-error:focus {
+  outline: red auto 1px;
+}

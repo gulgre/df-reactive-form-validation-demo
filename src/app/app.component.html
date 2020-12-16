@@ -1,0 +1,171 @@
+<h3>Reactive Forms Examples</h3>
+<mat-tab-group>
+  <mat-tab label="Basic Validation">
+    <form [formGroup]="basicForm" (ngSubmit)="onSubmit()">
+      
+      <div class="description">
+        The following demo shows the various validations that you can put in a
+        reactive form.
+        <ul>
+          <li>
+            First Name, Last Name, Phone, and Email all have individual
+            requirements.
+          </li>
+          <li>
+            Email has two requirements: something must be entered (required),
+            and the format must match an email address (email).
+          </li>
+        </ul>
+        To learn from this demo, first click Submit without entering anything.
+        Notice the various validation messages.
+      </div>
+      <div>
+        <label>
+          First Name
+          <input
+            type="text"
+            formControlName="firstName"
+            [ngClass]='validationMessages["firstName"] ? "validation-error" : ""'
+          />
+        </label>
+      </div>
+      <span class="validation-error"
+        >{{ validationMessages['firstName'] }}</span
+      >
+      <div>
+        <label>
+          Last Name
+          <input
+            type="text"
+            formControlName="lastName"
+            [ngClass]='validationMessages["lastName"] ? "validation-error" : ""'
+          />
+        </label>
+      </div>
+      <span class="validation-error">{{ validationMessages['lastName'] }}</span>
+      <div>
+        <label>
+          Phone
+          <input
+            type="numeric"
+            formControlName="phone"
+            [ngClass]='validationMessages["phone"] ? "validation-error" : ""'
+          />
+        </label>
+      </div>
+      <span class="validation-error">{{ validationMessages['phone'] }}</span>
+      <div>
+        <label>
+          Email
+          <input
+            type="email"
+            formControlName="email"
+            [ngClass]='validationMessages["email"] ? "validation-error" : ""'
+          />
+        </label>
+      </div>
+      <span class="validation-error">{{ validationMessages['email'] }}</span>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Cross Field">
+    <form [formGroup]="addressForm" (ngSubmit)="onSubmitCrossField()">
+      <div class="description">
+        The following demo shows the various validations that you can put in a
+        reactive form.
+        <ul>
+          <li>
+            The address validation illustrates nested validation, where one form
+            group's individual validations can be used to show generalized
+            validation messages.
+          </li>
+        </ul>
+        To learn from this demo, first click Submit without entering anything.
+        Notice the single validation message.
+      </div>
+      <div [ngClass]='validationMessages["address"] ? "validation-error" : ""'>
+        <label>
+          Address 1
+          <input type="text" formControlName="address1" />
+        </label>
+        <br />
+        <label>
+          Address 2
+          <input type="text" formControlName="address2" />
+        </label>
+        <br />
+        <label>
+          City
+          <input type="text" formControlName="city" />
+        </label>
+        <br />
+        <label>
+          State
+          <input type="text" formControlName="state" />
+        </label>
+        <br />
+        <label>
+          Zip
+          <input type="text" formControlName="zip" />
+        </label>
+      </div>
+      <span class="validation-error">{{ validationMessages['address'] }}</span>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  </mat-tab>
+
+    <mat-tab label="Async">
+    <form [formGroup]="asyncForm" (ngSubmit)="onSubmitAsync()">
+      <div class="description">
+        The following demo shows how you can use asynchronous validations in a reactive form
+        <ul>
+          <li>
+            The data reaches to a separate resource to validate the information.
+          </li>
+          <li>
+            Synchronous validations (in this example, checking that all required fields are filled out) are best put 
+          </li>
+          <li>
+            Async validations are not called until the regular validations are satisfied.
+          </li>
+        </ul>
+        In this demo, enter a valid address and click submit. Then enter an invalid address and click submit.        
+      </div>
+      <div [ngClass]='validationMessages["address"] ? "validation-error" : ""'>
+        <label>
+          Address 1
+          <input type="text" formControlName="address1" />
+        </label>
+        <br />
+        <label>
+          Address 2
+          <input type="text" formControlName="address2" />
+        </label>
+        <br />
+        <label>
+          City
+          <input type="text" formControlName="city" />
+        </label>
+        <br />
+        <label>
+          State
+          <input type="text" formControlName="state" />
+        </label>
+        <br />
+        <label>
+          Zip
+          <input type="text" formControlName="zip" />
+        </label>
+      </div>
+      <span class="validation-error">{{ validationMessages['async'] }}</span>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  </mat-tab>
+</mat-tab-group>
